@@ -35,7 +35,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            publish/*.*
+            geosite.dat
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
