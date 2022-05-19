@@ -12,6 +12,4 @@
   2.   - 可Fork后自行在sites文件夹下增减,后每天自动Build & Release
        
        - 文件在release分支里
-  
-
-**改自 https://github.com/v2ray/ext/tree/master/tools/geosites**
+ 
