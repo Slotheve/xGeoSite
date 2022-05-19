@@ -21,6 +21,7 @@ jobs:
       - name: Run & Move
         run: |
           git clone https://github.com/Slotheve/GeoSite.git
+          cd GeoSite
           ./v2sitedat
           mkdir -p publish
           cp GeoSite/geosite.dat ./publish/
