@@ -22,7 +22,7 @@ jobs:
         run: |
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 GeoSite
-          bash GeoSite/v2sitedat
+          ../v2sitedat
           mkdir -p publish
           cp geosite.dat ./publish
 
