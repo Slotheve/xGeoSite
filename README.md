@@ -2,9 +2,6 @@
 
 ## 自定义site.dat 文件
 
-### 下载
-
-  - https://github.com/onplus/v2ray-SiteDAT/releases
 
 ### 使用：
 
@@ -13,6 +10,8 @@
         - 更多参考 ``` ./v2sitedat --help ```
     
   2.   - 可Fork后自行在sites文件夹下增减,后每天自动Build & Release
+       
+       - 文件在release分支里
   
 
 **改自 https://github.com/v2ray/ext/tree/master/tools/geosites**
