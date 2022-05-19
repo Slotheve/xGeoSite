@@ -22,9 +22,10 @@ jobs:
         run: |
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 GeoSite
-          ../v2sitedat
+          cd GeoSite
+          ./v2sitedat
           mkdir -p publish
-          cp geosite.dat ./publish
+          cp geosite.dat publish
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
@@ -34,7 +35,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ./publish/*
+            publish/*.*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
