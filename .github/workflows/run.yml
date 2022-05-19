@@ -24,6 +24,7 @@ jobs:
           chmod -R 777 GeoSite
           cd GeoSite
           ./v2sitedat
+          cd
           mkdir -p publish
           cp geosite.dat ./publish/
 
@@ -35,7 +36,6 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            cd GeoSite
             ./publish/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
