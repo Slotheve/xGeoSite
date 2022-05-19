@@ -10,7 +10,8 @@
 
   [1]  - 修改/添加sites文件夹下的域名文件，运行 ./v2sitedat 生成geosite.dat
     
-    - 更多参考 ./v2sitedat --help
+       - 更多参考 ./v2sitedat --help
+    
   [2]  - 可Fork后自行在sites文件夹下增减,后每天自动Build & Release
   
 
