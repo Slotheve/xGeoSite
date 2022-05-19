@@ -26,7 +26,7 @@ jobs:
           ./v2sitedat
           cd
           mkdir -p publish
-          cp geosite.dat ./publish/
+          cp /root/GeoSite/geosite.dat ./publish/
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
