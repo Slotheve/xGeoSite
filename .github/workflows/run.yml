@@ -27,18 +27,6 @@ jobs:
           mkdir -p publish
           cp geosite.dat publish
 
-      - name: Release and upload assets
-        uses: softprops/action-gh-release@v0.1.6
-        with:
-          name: ${{ env.RELEASE_NAME }}
-          tag_name: ${{ env.TAG_NAME }}
-          draft: false
-          prerelease: false
-          files: |
-            geosite.dat
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Git push assets to "release" branch
         run: |
           cd GeoSite/publish || exit 1
