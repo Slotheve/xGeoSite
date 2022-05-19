@@ -25,6 +25,7 @@ jobs:
           cd GeoSite
           ./v2sitedat
           cd
+          chmod -R 777 /root/GeoSite
           mkdir -p publish
           cp /root/GeoSite/geosite.dat ./publish/
 
