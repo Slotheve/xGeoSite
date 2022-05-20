@@ -24,8 +24,9 @@ jobs:
           chmod -R 777 GeoSite
           cd GeoSite
           ./v2sitedat
+          mv geosite.dat GeoSite.dat
           mkdir -p publish
-          cp geosite.dat publish
+          cp GeoSite.dat publish
 
       - name: Git push assets to "release" branch
         run: |
