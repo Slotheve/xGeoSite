@@ -2,6 +2,18 @@
 
 ## 自定义site.dat 文件
 
+### 规则:
+  
+  - include:another-file
+  
+  - domain:google.com @attr1 @attr2
+  
+  - keyword:google
+  
+  - regex:www\.google\.com
+  
+  - full:www.google.com
+
 
 ### 使用：
 
