@@ -1,7 +1,7 @@
-domain:apple.com @proxy
-domain:icloud.com @proxy
-keyword:itunes.apple.com @proxy
-domain:apple-cloudkit.com @proxy
+apple.com @proxy
+icloud.com @proxy
+itunes.apple.com @proxy
+apple-cloudkit.com @proxy
 apple.cn @direct
 apple.com.cn @direct
 apple-store.cn @direct
