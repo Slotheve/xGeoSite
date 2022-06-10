@@ -24,9 +24,11 @@ jobs:
           chmod -R 777 GeoSite
           cd GeoSite
           ./v2sitedat
+          sha256sum geosite.dat > geosite.dat.sha256sum
           cd /home/runner/work/GeoSite/GeoSite
           mkdir -p publish
           cp GeoSite/geosite.dat publish
+          cp GeoSite/geosite.dat.sha256sum publish
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
