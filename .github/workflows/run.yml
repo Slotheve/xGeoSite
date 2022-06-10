@@ -29,7 +29,7 @@ jobs:
           mkdir -p publish
           cp GeoSite/GeoSite.dat publish
           mv GeoSite/GeoSite.dat geosite.dat
-          cp GeoSite/geosite.dat publish
+          cp geosite.dat publish
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
