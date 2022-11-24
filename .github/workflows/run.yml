@@ -23,6 +23,8 @@ jobs:
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 GeoSite
           cd GeoSite
+          wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
+          mv direct-list.txt sites/cn.txt
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           cd /home/runner/work/GeoSite/GeoSite
