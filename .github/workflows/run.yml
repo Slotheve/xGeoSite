@@ -60,6 +60,8 @@ jobs:
         run: |
           cd publish || exit 1
           git init
+          git config --global user.email "slotheve@slotheve.com"
+          git config --global user.name "Slotheve"
           git checkout -b release
           git add .
           git commit -m "realse"
