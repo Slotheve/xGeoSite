@@ -37,7 +37,7 @@ jobs:
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Release and upload assets
-        uses: softprops/action-gh-release@v0.1.6
+        uses: softprops/action-gh-release@v0.1.15
         with:
           name: ${{ env.RELEASE_NAME }}
           tag_name: ${{ env.TAG_NAME }}
