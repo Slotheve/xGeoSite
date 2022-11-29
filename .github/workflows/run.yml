@@ -23,10 +23,9 @@ jobs:
           mv apple-cn.txt sites/apple
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
-          cd /home/runner/work/GeoSite/GeoSite
           mkdir -p publish
-          cp GeoSite/geosite.dat publish
-          cp GeoSite/geosite.dat.sha256sum publish
+          cp geosite.dat publish
+          cp geosite.dat.sha256sum publish
 
       - name: Generate release tag
         id: tag
@@ -60,8 +59,8 @@ jobs:
         run: |
           cd publish || exit 1
           git init
-          git config --global user.email "slotheve@slotheve.com"
-          git config --global user.name "Slotheve"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b release
           git add .
           git commit -m "${{ env.RELEASE_NAME }}"
