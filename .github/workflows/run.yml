@@ -47,6 +47,15 @@ jobs:
           files: |
             ./publish/*
 
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            keep_latest: 20
+            delete_tags: true
+
       - name: Git push assets to "release" branch
         run: |
           cd publish || exit 1
@@ -57,12 +66,3 @@ jobs:
           git add .
           git commit -m "${{ env.RELEASE_NAME }}"
           git push -f -u origin release
-
-      - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.1.0
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            keep_latest: 20
-            delete_tags: true
