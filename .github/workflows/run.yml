@@ -65,4 +65,4 @@ jobs:
           git checkout -b release
           git add .
           git commit -m "realse"
-          git push -f -u release
+          git push --set-upstream release release
