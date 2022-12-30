@@ -23,6 +23,7 @@ jobs:
           chmod -R 777 GeoSite
           cd GeoSite
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
+          sed -i '/^.*microsoft.*/d' direct-list.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt
           mv direct-list.txt sites/cn
           mv apple-cn.txt sites/apple
