@@ -1,3 +1,5 @@
+regexp:\.cm.steampowered*\.com
+regexp:\.steamserver*\.net
 cm.steampowered.com
 steamcontent.com
 akamaihd.net
