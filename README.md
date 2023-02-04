@@ -10,7 +10,7 @@
   
   - keyword:google
   
-  - regex:www\.google\.com
+  - regex/regexp:www\.google\.com
   
   - full:www.google.com
 
