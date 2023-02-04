@@ -60,7 +60,7 @@ jobs:
             ./GeoSite/publish/*
 
       - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.2.0
+        uses: dev-drprasad/delete-older-releases@v0.2.1
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
