@@ -31,7 +31,6 @@ jobs:
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           mv direct-list.txt sites/cn
-          cat sites/cn
           mv apple-cn.txt sites/apple
           mv reject-list.txt sites/reject
           ./v2sitedat
