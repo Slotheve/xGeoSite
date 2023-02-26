@@ -1,5 +1,15 @@
 # v2ray-SiteDAT
 
+此规则集配置如下:
+  - `GEOSITE:cn` (`GEOSITE,cn,DIRECT`)
+  - `GEOSITE:direct` (`GEOSITE,direct,DIRECT`)
+  - `GEOSITE:proxy` (`GEOSITE,proxy,PROXY`)
+  - `GEOSITE:wechat` (`GEOSITE,wechat,DIRECT`)
+  - `GEOSITE:apple` (`GEOSITE,apple,CUSTOM`)
+  - `GEOSITE:down` (`GEOSITE,down,DIRECT`)
+  - `GEOSITE:game` (`GEOSITE,game,CUSTOM`)
+  - `GEOSITE:micro` (`GEOSITE,micro,DIRECT`)
+
 ## 自定义site.dat 文件
 
 ### 规则:
