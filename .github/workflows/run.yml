@@ -33,6 +33,7 @@ jobs:
           sed -i 's/[[:space:]]//g' apple.txt
           sed -i "s/-'+.//g" apple.txt
           sed -i "s/'//g" apple.txt
+          sed -i "s/payload://g" apple.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           mv direct-list.txt sites/cn
           mv apple.txt sites/apple
