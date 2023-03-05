@@ -30,6 +30,9 @@ jobs:
           sed -i '/^.*itunes*.*/d' direct-list.txt
           sed -i '/^.*xdmb*.*/d' direct-list.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt
+          sed -i 's/[[:space:]]//g' apple.txt
+          sed -i "s/-'+.//g" apple.txt
+          sed -i "s/'//g" apple.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           mv direct-list.txt sites/cn
           mv apple.txt sites/apple
