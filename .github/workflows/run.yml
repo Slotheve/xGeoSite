@@ -37,6 +37,7 @@ jobs:
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
+          cp sites/* publish/
           cp geosite.dat publish
           cp geosite.dat.sha256sum publish
 
