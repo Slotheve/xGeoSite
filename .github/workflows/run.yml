@@ -32,6 +32,7 @@ jobs:
           sed -i '/^.*akadns*.*/d' direct-list.txt
           sed -i '/^.*edgekey*.*/d' direct-list.txt
           sed -i '/^.*aaplimg*.*/d' direct-list.txt
+          sed -i '/^.*google*.*/d' direct-list.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           mv direct-list.txt sites/cn
           mv reject-list.txt sites/reject
