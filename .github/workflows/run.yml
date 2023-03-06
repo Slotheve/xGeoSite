@@ -35,11 +35,10 @@ jobs:
           sed -i '/^.*aaplimg*.*/d' sites/cn
           sed -i '/^.*google*.*/d' sites/cn
           ./v2sitedat
-          rm sites/cn sites/game sites/down sites/wechat
-          wget -O sites/wechat https://raw.githubusercontent.com/Slotheve/Loon-QX/main/Rule/WeChat.txt
+          rm sites/cn sites/game sites/down
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
+          sed -i '/$/a\IP-ASN,132203' sites/direct
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/apple
-          sed -i 's/^DOMAIN-SUFFIX\,IP-ASN/IP-ASN/' sites/wechat
           sed -i 's/^DOMAIN-SUFFIX\,1drv/DOMAIN-KEYWORD,1drv/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
@@ -47,14 +46,14 @@ jobs:
           mkdir -p publish
           cp {sites/*,geosite.dat,geosite.dat.sha256sum} publish
 
-      - name: Generate release tag
+      - name: Generate Release
         id: tag
         run: |
           echo "release_tag=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
           echo "release_date=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
-      - name: Upload files to release
+      - name: Upload to Release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,7 +65,7 @@ jobs:
           files: |
             ./GeoSite/publish/*
 
-      - name: Git push assets to "release" branch
+      - name: Git push  to "Release"
         run: |
           cd GeoSite/publish || exit 1
           git init
