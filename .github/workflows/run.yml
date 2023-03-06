@@ -23,30 +23,21 @@ jobs:
           chmod -R 777 GeoSite
           cd GeoSite
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
-          sed -i '/^.*microsoft.*/d' direct-list.txt
-          sed -i '/^.*speedtest*.*/d' direct-list.txt
-          sed -i '/^.*apple*.*/d' direct-list.txt
-          sed -i '/^.*icloud*.*/d' direct-list.txt
-          sed -i '/^.*mzstatic*.*/d' direct-list.txt
-          sed -i '/^.*xdmb*.*/d' direct-list.txt
-          sed -i '/^.*akadns*.*/d' direct-list.txt
-          sed -i '/^.*edgekey*.*/d' direct-list.txt
-          sed -i '/^.*aaplimg*.*/d' direct-list.txt
-          sed -i '/^.*google*.*/d' direct-list.txt
           wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           mv direct-list.txt sites/cn
           mv reject-list.txt sites/reject
+          sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest*.*/d' sites/cn
+          sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
+          sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
+          sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
+          sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           ./v2sitedat
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/apple
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/wechat
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/direct
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/micro
+          rm sites/cn sites/game sites/down
+          sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
+          sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/apple
           sed -i 's/^DOMAIN-SUFFIX\,1drv/DOMAIN-KEYWORD,1drv/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/proxy
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
-          rm sites/cn sites/game sites/down
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp sites/* publish/
