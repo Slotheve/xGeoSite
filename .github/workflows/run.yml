@@ -37,6 +37,14 @@ jobs:
           mv direct-list.txt sites/cn
           mv reject-list.txt sites/reject
           ./v2sitedat
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/apple
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/wechat
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/micro
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/direct
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/proxy
+          sed -i "s/^/DOMAIN-SUFFIX,/" sites/cn
+          sed -i "/^DOMAIN-SUFFIX,full*/,$d" sites/cn
+          sed -i "/^DOMAIN-SUFFIX,regexp*/,$d" sites/cn
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp sites/* publish/
