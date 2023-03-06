@@ -4,7 +4,6 @@ icloud.com
 icloud.com.cn
 cdn-apple.com
 apple.com.cn
-a*.mzstatic.com
 a1.mzstatic.com
 a2.mzstatic.com
 a3.mzstatic.com
@@ -20,3 +19,4 @@ icloud.com.akadns.net
 itunes-apple.com.akadns.net
 origin-apple.com.akadns.net
 apple.com.edgekey.net
+regexp:a[1-5].mzstatic.com
