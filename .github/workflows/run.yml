@@ -63,15 +63,6 @@ jobs:
           files: |
             ./GeoSite/publish/*
 
-      - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.2.0
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            keep_latest: 20
-            delete_tags: true
-
       - name: Git push assets to "release" branch
         run: |
           cd GeoSite/publish || exit 1
