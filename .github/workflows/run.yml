@@ -22,27 +22,30 @@ jobs:
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 GeoSite
           cd GeoSite
-          wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
-          wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
-          mv direct-list.txt sites/cn
-          mv reject-list.txt sites/reject
-          sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest*.*/d' sites/cn
-          sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
-          sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
-          sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
-          sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
+          wget -O sites/cn https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
+          wget -O sites/reject https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
+          sed -i '/^.*microsoft.*/d' sites/cn
+          sed -i '/^.*speedtest*.*/d' sites/cn
+          sed -i '/^.*apple*.*/d' sites/cn
+          sed -i '/^.*icloud*.*/d' sites/cn
+          sed -i '/^.*mzstatic*.*/d' sites/cn
+          sed -i '/^.*xdmb*.*/d' sites/cn
+          sed -i '/^.*akadns*.*/d' sites/cn
+          sed -i '/^.*edgekey*.*/d' sites/cn
+          sed -i '/^.*aaplimg*.*/d' sites/cn
+          sed -i '/^.*google*.*/d' sites/cn
           ./v2sitedat
-          rm sites/cn sites/game sites/down
+          rm sites/cn sites/game sites/down sites/wechat
+          wget -O sites/wechat https://raw.githubusercontent.com/Slotheve/Loon-QX/main/Rule/WeChat.txt
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/apple
+          sed -i 's/^DOMAIN-SUFFIX\,IP-ASN/IP-ASN/' sites/wechat
           sed -i 's/^DOMAIN-SUFFIX\,1drv/DOMAIN-KEYWORD,1drv/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
-          cp sites/* publish/
-          cp geosite.dat publish
-          cp geosite.dat.sha256sum publish
+          cp {sites/*,geosite.dat,geosite.dat.sha256sum} publish
 
       - name: Generate release tag
         id: tag
