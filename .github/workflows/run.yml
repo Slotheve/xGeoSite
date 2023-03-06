@@ -38,6 +38,7 @@ jobs:
           rm sites/cn sites/game sites/down
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
           sed -i '$aIP-ASN,132203' sites/direct
+          sed -i '$aDOMAIN-SUFFIX,bixi,alicdn.com' sites/reject
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/apple
           sed -i 's/^DOMAIN-SUFFIX\,1drv/DOMAIN-KEYWORD,1drv/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
