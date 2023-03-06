@@ -42,9 +42,10 @@ jobs:
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/micro
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/direct
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/proxy
-          sed -i 's/^/DOMAIN-SUFFIX,/' sites/cn
-          sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
-          sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
+          sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
+          #sed -i 's/^/DOMAIN-SUFFIX,/' sites/cn
+          #sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
+          #sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp sites/* publish/
