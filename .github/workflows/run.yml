@@ -46,9 +46,7 @@ jobs:
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/proxy
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
-          #sed -i 's/^/DOMAIN-SUFFIX,/' sites/cn
-          #sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
-          #sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
+          rm sites/cn sites/game sites/down
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp sites/* publish/
