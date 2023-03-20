@@ -45,6 +45,7 @@ jobs:
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
           wget -O sites/cnip https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+          sed -i 's/no-resolve/DIRECT,no-resolve/' sites/cnip
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp {sites/*,geosite.dat,geosite.dat.sha256sum} publish
