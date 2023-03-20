@@ -35,17 +35,13 @@ jobs:
           sed -i '/^.*aaplimg*.*/d' sites/cn
           sed -i '/^.*google*.*/d' sites/cn
           ./v2sitedat
-          rm sites/game sites/down
+          rm sites/game sites/down sites/cn
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
-          sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
-          sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/apple
           sed -i '$aDOMAIN-SUFFIX,bixi.alicdn.com' sites/reject
           sed -i 's/^DOMAIN-SUFFIX\,1drv/DOMAIN-KEYWORD,1drv/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
-          wget -O sites/cnip https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
-          sed -i 's/no-resolve/DIRECT,no-resolve/' sites/cnip
           sha256sum geosite.dat > geosite.dat.sha256sum
           mkdir -p publish
           cp {sites/*,geosite.dat,geosite.dat.sha256sum} publish
