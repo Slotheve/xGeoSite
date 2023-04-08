@@ -51,7 +51,8 @@ jobs:
           sed -i 's/^/  - /' sites/*
           sed -i '1i\payload:' sites/*
           cp sites/* publish/clash
-          sed -i 's/$/,force-remote-dns/' publish/loon/*
+          sed -i 's/$/,force-remote-dns/' publish/loon/proxy
+          sed -i 's/$/,force-remote-dns/' publish/loon/micro
           wget -O publish/loon/cnip https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/CN-ip-cidr.txt
           sed -i '1d' publish/loon/cnip
           sed -i 's/^/ip-cidr,/' publish/loon/cnip
