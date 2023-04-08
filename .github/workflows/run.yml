@@ -50,6 +50,10 @@ jobs:
           cp {geosite.dat,geosite.dat.sha256sum} publish && cp sites/* publish/other
           sed -i 's/^/  - /' sites/*
           sed -i '1i\payload:' sites/*
+          wget -O sites/cnip https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/CN-ip-cidr.txt
+          sed -i 's/^/ip-cidr,/' sites/cnip
+          sed -i 's/$/,no-resolve/' sites/cnip
+          cp sites/cnip publish/other
           cp sites/* publish/clash
 
       - name: Generate Release
