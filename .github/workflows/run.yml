@@ -56,7 +56,7 @@ jobs:
           sed -i 's/^/ip-cidr,/' sites/cnip
           sed -i 's/$/,no-resolve/' sites/cnip
           rm -rf sites/apple && cp sites/cnip publish/other && cp apple publish/other
-          sed -i '1i\ip-cidr,::/0' publish/other/reject
+          sed -i '1i\ip6-cidr,::/0' publish/other/reject
 
       - name: Generate Release
         id: tag
