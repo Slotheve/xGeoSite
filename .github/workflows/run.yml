@@ -55,6 +55,7 @@ jobs:
           sed -i '1d' sites/cnip
           sed -i 's/^/ip-cidr,/' sites/cnip
           sed -i 's/$/,no-resolve/' sites/cnip
+          sed -i '1i\ip-cidr,::/0' sites/other/reject
           rm -rf sites/apple && cp sites/cnip publish/other && cp apple publish/other
 
       - name: Generate Release
