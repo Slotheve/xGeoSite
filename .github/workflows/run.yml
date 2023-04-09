@@ -36,7 +36,7 @@ jobs:
           sed -i '/^.*google*.*/d' sites/cn
           ./v2sitedat
           rm sites/game
-          mkdir -pv publish/clash && mkdir -pv publish/other && mkdir -pv publish/loon
+          mkdir -pv publish/clash && mkdir -pv publish/other
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
           sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
@@ -47,16 +47,15 @@ jobs:
           sed -i 's/^DOMAIN-SUFFIX\,msn/DOMAIN-KEYWORD,msn/' sites/micro
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
           sha256sum geosite.dat > geosite.dat.sha256sum
-          cp {geosite.dat,geosite.dat.sha256sum} publish && cp sites/* publish/other && cp sites/* publish/loon
+          cp {geosite.dat,geosite.dat.sha256sum} publish && cp sites/* publish/other
           sed -i 's/^/  - /' sites/*
           sed -i '1i\payload:' sites/*
           cp sites/* publish/clash
-          sed -i 's/$/,force-remote-dns/' publish/loon/proxy
-          sed -i 's/$/,force-remote-dns/' publish/loon/micro
-          wget -O publish/loon/cnip https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/CN-ip-cidr.txt
-          sed -i '1d' publish/loon/cnip
-          sed -i 's/^/ip-cidr,/' publish/loon/cnip
-          sed -i 's/$/,no-resolve/' publish/loon/cnip
+          wget -O sites/cnip https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/CN-ip-cidr.txt
+          sed -i '1d' sites/cnip
+          sed -i 's/^/ip-cidr,/' sites/cnip
+          sed -i 's/$/,no-resolve/' sites/cnip
+          rm -rf sites/apple && cp sites/cnip publish/other && cp apple pblish/other
 
       - name: Generate Release
         id: tag
