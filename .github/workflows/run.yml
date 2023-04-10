@@ -37,7 +37,6 @@ jobs:
           ./v2sitedat
           rm sites/game
           mkdir -pv publish/clash && mkdir -pv publish/other
-          mkdir -pv publish/surge && cp sites/* publish/surge
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
           sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
@@ -49,6 +48,8 @@ jobs:
           sed -i 's/^DOMAIN-SUFFIX\,microsoft/DOMAIN-KEYWORD,microsoft/' sites/micro
           sha256sum geosite.dat > geosite.dat.sha256sum
           cp {geosite.dat,geosite.dat.sha256sum} publish && cp sites/* publish/other
+          mkdir -pv publish/surge && cp sites/* publish/surge && rm -rf publish/surge/reject
+          wget -O publish/surge/reject https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/reject.txt
           sed -i 's/^/  - /' sites/*
           sed -i '1i\payload:' sites/*
           cp sites/* publish/clash
