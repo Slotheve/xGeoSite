@@ -37,6 +37,7 @@ jobs:
           ./v2sitedat
           rm sites/game
           mkdir -pv publish/clash && mkdir -pv publish/other
+          mkdir -pv publish/surge && cp sites/* publish/surge
           sed -i 's/^/DOMAIN-SUFFIX,/' sites/*
           sed -i '/^DOMAIN-SUFFIX\,full\:/,$d' sites/cn
           sed -i '/^DOMAIN-SUFFIX\,regexp\:/,$d' sites/cn
