@@ -34,7 +34,6 @@ jobs:
           sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*aaplimg*.*/d' sites/cn
           sed -i '/^.*google*.*/d' sites/cn
-          sed -i '1i\globalssh.cn' sites/cn
           ./v2sitedat
           rm sites/game
           mkdir -pv publish/clash && mkdir -pv publish/other
