@@ -1,8 +1,6 @@
 name: GeoSite
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: "30 22 * * *"
   push:
     branches:
       - master
