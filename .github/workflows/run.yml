@@ -1,6 +1,5 @@
 name: GeoSite
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
@@ -10,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run & Move
+      - name: Run And Move
         run: |
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 GeoSite && cd GeoSite
