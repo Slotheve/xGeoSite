@@ -21,6 +21,7 @@ jobs:
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn && sed -i '/^.*akamaized*.*/d' sites/cn
+          sed -i '/^.*initnil*.*/d' sites/cn
           ./v2sitedat
           mkdir -pv publish/clash publish/other publish/surge
           echo sites/apple sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
