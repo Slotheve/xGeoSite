@@ -30,10 +30,10 @@ jobs:
           echo publish/other publish/surge | xargs -n 1 cp -v sites/*
           sed -i 's/^/  - /' sites/* && sed -i '1i\payload:' sites/*
           cp sites/* publish/clash
-          sed 's/$/USER-AGENT,*TencentMidasConnect*/' publish/surge/direct
-          sed 's/$/USER-AGENT,*WeChat*/' publish/surge/direct
-          sed 's/$/USER-AGENT,*MicroMessenger*/' publish/surge/direct
-          sed 's/$/USER-AGENT,*QQ*/' publish/surge/direct
+          sed -i 's/$/USER-AGENT,*TencentMidasConnect*/' publish/surge/direct
+          sed -i 's/$/USER-AGENT,*WeChat*/' publish/surge/direct
+          sed -i 's/$/USER-AGENT,*MicroMessenger*/' publish/surge/direct
+          sed -i 's/$/USER-AGENT,*QQ*/' publish/surge/direct
 
       - name: Generate Release
         id: tag
