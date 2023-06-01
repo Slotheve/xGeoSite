@@ -1,7 +1,5 @@
 1drv
-msn
 microsoft
-gamepass.com
 aadrm.com
 acompli.com
 acompli.net
@@ -12,8 +10,11 @@ assets-yammer.com
 azure.com
 azure.net
 azureedge.net
+azureiotcentral.com
 azurerms.com
 bing.com
+bing.net
+bingapis.com
 cloudapp.net
 cloudappsecurity.com
 edgesuite.net
@@ -22,9 +23,6 @@ hotmail.com
 live.com
 live.net
 lync.com
-microsoft.com
-microsoft.jp
-microsoft.us
 msappproxy.net
 msauth.net
 msauthimages.net
@@ -35,6 +33,7 @@ msftauth.net
 msftauthimages.net
 msftidentity.com
 msidentity.com
+msn.cn
 msn.com
 msocdn.com
 msocsp.com
@@ -78,4 +77,3 @@ windowsupdate.com
 wunderlist.com
 yammer.com
 yammerusercontent.com
-bingapis.com
