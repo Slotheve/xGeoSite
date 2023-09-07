@@ -16,7 +16,7 @@ jobs:
           chmod -R 777 GeoSite && cd GeoSite
           wget -O sites/cn https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
           wget -O sites/reject https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
-          sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest*.*/d' sites/cn
+          sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest.com*.*/d' sites/cn
           sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
           sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
