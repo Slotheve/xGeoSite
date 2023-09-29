@@ -30,6 +30,7 @@ jobs:
           sed -i '1i\DOMAIN-KEYWORD,szbdyd.com' sites/reject
           sed -i '1i\DOMAIN-KEYWORD,hw-sh-pcdn-' sites/reject
           sed -i '1i\DOMAIN-KEYWORD,p2p.huya.com' sites/reject
+          sed -i '1i\DOMAIN-KEYWORD,statwup.huya.com' sites/reject
           ./v2sitedat
           mkdir -pv publish/clash publish/other publish/surge
           echo sites/apple sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
