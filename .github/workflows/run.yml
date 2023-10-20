@@ -17,14 +17,15 @@ jobs:
           git clone https://github.com/Slotheve/GeoSite.git
           chmod -R 777 xGeoSite && cd xGeoSite
           wget -O sites/cn https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
-          wget -O sites/reject https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+          wget -O site/icloud https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/icloud.txt
+          wget -O site/apple https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/apple.txt
           sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest.com*.*/d' sites/cn
           sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
           sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn && sed -i '/^.*akamaized*.*/d' sites/cn
-          sed -i '/#/d' sites/reject && sed -i '/^$/d' sites/reject
+          touch sites/reject
           sed -i '1i\DOMAIN-KEYWORD,logsvr.ppio.cloud' sites/reject
           sed -i '1i\DOMAIN-KEYWORD,.va.huya.com' sites/reject
           sed -i '1i\DOMAIN-KEYWORD,szbdyd.com' sites/reject
