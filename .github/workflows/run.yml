@@ -15,7 +15,7 @@ jobs:
       - name: Run And Move
         run: |
           git clone https://github.com/Slotheve/GeoSite.git
-          chmod -R 777 GeoSite && cd GeoSite
+          chmod -R 777 xGeoSite && cd xGeoSite
           wget -O sites/cn https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
           wget -O sites/reject https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
           sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest.com*.*/d' sites/cn
@@ -60,11 +60,11 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ./GeoSite/publish/*
+            ./xGeoSite/publish/*
 
       - name: Git push  to "Release"
         run: |
-          cd GeoSite/publish || exit 1
+          cd xGeoSite/publish || exit 1
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
