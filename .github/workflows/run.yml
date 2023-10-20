@@ -47,8 +47,8 @@ jobs:
       - name: Generate Release
         id: tag
         run: |
-          echo "release_tag=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
-          echo "release_date=$(date +"%Y.%m.%d")" >> $GITHUB_OUTPUT
+          echo "release_tag=$(date +"%Y.%m.%d.%H.%M")" >> $GITHUB_OUTPUT
+          echo "release_date=$(date +"%Y.%m.%d.%H.%M")" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Upload to Release
