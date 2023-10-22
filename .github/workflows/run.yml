@@ -26,7 +26,7 @@ jobs:
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn && sed -i '/^.*akamaized*.*/d' sites/cn
-          touch sites/reject
+          wget -O sites/reject https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           echo "logsvr.ppio.cloud" >> sites/reject
           echo "va.huya.com" >> sites/reject
           echo "szbdyd.com" >> sites/reject
