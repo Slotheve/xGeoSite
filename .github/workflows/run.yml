@@ -20,7 +20,7 @@ jobs:
           wget -O sites/reject https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
           wget -O sites/icloud https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/icloud.txt
           wget -O sites/apple https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/apple.txt
-          sed -i 's/[^ ]//' sites/apple && sed -i 's/[^ ]//' sites/icloud
+          cat sites/icloud >> sites/apple && rm sites/icloud && sed -i 's/[^ ]//' sites/apple
           sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest.com*.*/d' sites/cn
           sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
           sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
@@ -34,9 +34,9 @@ jobs:
           cp sites/* publish/other && sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
           echo "DOMAIN-KEYWORD,-pcdn-" >> sites/reject
           mkdir -pv publish/clash publish/surge
-          echo sites/apple sites/icloud sites/direct | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
-          echo sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
-          sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn && sed -i 's/^/DOMAIN-SUFFIX,/' sites/cn
+          echo sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
+          sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn
+          echo sites/cn sites/apple | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
           sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
           echo publish/surge | xargs -n 1 cp -v sites/*
           sed -i 's/^/  - /' sites/* && sed -i '1i\payload:' sites/* && cp sites/* publish/clash
