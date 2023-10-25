@@ -37,6 +37,8 @@ jobs:
           echo sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn
           echo sites/cn sites/apple | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
+          echo 'DOMAIN-KEYWORD,courier.push.apple.com' >> sites/apple
+          echo 'DOMAIN-KEYWORD,apac-china-courier' >> sites/apple
           sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
           echo publish/surge | xargs -n 1 cp -v sites/*
           sed -i 's/^/  - /' sites/* && sed -i '1i\payload:' sites/* && cp sites/* publish/clash
