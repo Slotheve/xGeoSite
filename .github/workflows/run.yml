@@ -32,11 +32,12 @@ jobs:
           echo 'apac-china-courier' >> sites/apple
           mkdir -pv publish/other publish/clash publish/surge
           ./v2sitedat && sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
+          echo publish/other/cn publish/surge/cn publish/clash/cn | xargs -n 1 sed -i '/^full\:/,$d'
+          echo publish/other/cn publish/surge/cn publish/clash/cn | xargs -n 1 sed -i '$a\.cn'
           cp sites/* publish/other
           echo publish/other/direct publish/other/proxy publish/other/apple | xargs -n 1 sed -i 's/^/keyword:/'
           echo publish/other/cn publish/other/micro publish/other/down publish/other/reject | xargs -n 1 sed -i 's/^/domain:/'
           echo "keyword:-pcdn-" >> publish/other/reject && echo "keyword:mcdn.bili" >> publish/other/reject
-          sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn
           cp sites/* publish/surge
           echo publish/surge/direct publish/surge/proxy publish/surge/apple | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
