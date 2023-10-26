@@ -23,30 +23,34 @@ jobs:
           cat sites/icloud >> sites/apple && rm sites/icloud && sed -i 's/[^ ]//' sites/apple
           sed -i '/^.*microsoft.*/d' sites/cn && sed -i '/^.*speedtest.com*.*/d' sites/cn
           sed -i '/^.*apple*.*/d' sites/cn && sed -i '/^.*icloud*.*/d' sites/cn
-          sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*xdmb*.*/d' sites/cn
+          sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
-          sed -i '/^.*aaplimg*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn && sed -i '/^.*akamaized*.*/d' sites/cn
           echo "ppio.cloud" >> sites/reject && echo "va.huya.com" >> sites/reject
           echo "pp.io" >> sites/reject && echo "p2p.huya.com" >> sites/reject
-          echo "statwup.huya.com" >> sites/reject && mkdir -pv publish/other
-          ./v2sitedat
-          cp sites/* publish/other && sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
-          echo "DOMAIN-KEYWORD,-pcdn-" >> sites/reject
-          echo "DOMAIN-KEYWORD,mcdn.bili" >> sites/reject
-          mkdir -pv publish/clash publish/surge
-          echo sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
+          echo "statwup.huya.com" >> sites/reject && echo "courier.push.apple.com" >> sites/apple
+          echo 'apac-china-courier' >> sites/apple
+          mkdir -pv publish/other publish/clash publish/surge
+          ./v2sitedat && sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
+          cp sites/* publish/other
+          echo publish/other/direct publish/other/proxy publish/other/apple | xargs -n 1 sed -i 's/^/keyword:/'
+          echo publish/other/cn publish/other/micro publish/other/down publish/other/reject | xargs -n 1 sed -i 's/^/domain:/'
+          echo "keyword:-pcdn-" >> publish/other/reject && echo "keyword:mcdn.bili" >> publish/other/reject
           sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn
-          echo sites/cn sites/apple | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
-          echo 'DOMAIN-KEYWORD,courier.push.apple.com' >> sites/apple
-          echo 'DOMAIN-KEYWORD,apac-china-courier' >> sites/apple
-          sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
-          echo publish/surge | xargs -n 1 cp -v sites/*
-          sed -i 's/^/  - /' sites/* && sed -i '1i\payload:' sites/* && cp sites/* publish/clash
-          sed -i '$a\USER-AGENT,*TencentMidasConnect*' publish/surge/direct
-          sed -i '$a\USER-AGENT,*WeChat*' publish/surge/direct
-          sed -i '$a\USER-AGENT,*MicroMessenger*' publish/surge/direct
-          sed -i '$a\USER-AGENT,*QQ*' publish/surge/direct
+          cp sites/* publish/surge
+          echo publish/surge/direct publish/surge/proxy publish/surge/apple | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
+          echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
+          echo "DOMAIN-KEYWORD,-pcdn-" >> publish/other/reject && echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/other/reject
+          echo 'DOMAIN-KEYWORD,courier.push.apple.com' >> publish/surge/apple && echo 'DOMAIN-KEYWORD,apac-china-courier' >> publish/surge/apple
+          echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct && echo "USER-AGENT,*WeChat*" >> publish/surge/direct
+          echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct && echo "USER-AGENT,*QQ*" >> publish/surge/direct
+          cp sites/* publish/clash
+          echo publish/clash/direct publish/clash/proxy publish/clash/apple | xargs -n 1 sed -i 's/^/  - DOMAIN-KEYWORD,/'
+          echo publish/clash/cn publish/clash/micro publish/clash/down publish/clash/reject | xargs -n 1 sed -i 's/^/  - DOMAIN-SUFFIX,/'
+          echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject && echo "  - DOMAIN-KEYWORD,mcdn.bili" >> publish/clash/reject
+          echo '  - DOMAIN-KEYWORD,courier.push.apple.com' >> publish/clash/apple
+          echo '  - DOMAIN-KEYWORD,apac-china-courier' >> publish/clash/apple
+          sed -i '1i\payload:' publish/clash/*
 
       - name: Generate Release
         id: tag
