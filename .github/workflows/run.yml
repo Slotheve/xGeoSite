@@ -33,6 +33,7 @@ jobs:
           ./v2sitedat
           cp sites/* publish/other && sed -i 's/^/DOMAIN-SUFFIX,/' sites/reject
           echo "DOMAIN-KEYWORD,-pcdn-" >> sites/reject
+          echo "DOMAIN-KEYWORD,mcdn.bili" >> sites/reject
           mkdir -pv publish/clash publish/surge
           echo sites/direct sites/down sites/proxy sites/micro | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           sed -i '/^full\:/,$d' sites/cn && sed -i '$a\.cn' sites/cn
