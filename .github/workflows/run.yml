@@ -41,7 +41,7 @@ jobs:
 
           echo publish/surge/direct publish/surge/proxy publish/surge/apple | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
-          echo "DOMAIN-KEYWORD,-pcdn-" >> publish/other/reject && echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/other/reject
+          echo "DOMAIN-KEYWORD,-pcdn-" >> publish/surge/reject && echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/surge/reject
           echo 'DOMAIN-KEYWORD,courier.push.apple.com' >> publish/surge/apple && echo 'DOMAIN-KEYWORD,apac-china-courier' >> publish/surge/apple
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct && echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct && echo "USER-AGENT,*QQ*" >> publish/surge/direct
