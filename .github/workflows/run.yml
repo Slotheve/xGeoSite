@@ -26,10 +26,8 @@ jobs:
           sed -i '/^.*mzstatic*.*/d' sites/cn && sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*akadns*.*/d' sites/cn && sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn && sed -i '/^.*akamaized*.*/d' sites/cn
-          echo "ppio.cloud" >> sites/reject && echo "va.huya.com" >> sites/reject
-          echo "pp.io" >> sites/reject && echo "p2p.huya.com" >> sites/reject
-          echo "statwup.huya.com" >> sites/reject && echo "courier.push.apple.com" >> sites/apple
-          echo 'apac-china-courier' >> sites/apple
+          echo "ppio.cloud" >> sites/reject && echo "pp.io" >> sites/reject && echo "p2p.huya.com" >> sites/reject
+          echo "courier.push.apple.com" >> sites/apple && echo 'apac-china-courier' >> sites/apple
           mkdir -pv publish/other publish/clash publish/surge
           ./v2sitedat && sha256sum geosite.dat > geosite.dat.sha256sum && cp {geosite.dat,geosite.dat.sha256sum} publish
           cp sites/* publish/other && cp sites/* publish/surge && cp sites/* publish/clash
