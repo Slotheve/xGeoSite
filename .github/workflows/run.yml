@@ -37,10 +37,11 @@ jobs:
           cp sites/* publish/surge && cp sites/* publish/clash
 
           echo "regexp:^.*\.cn$" >> sites/cn
-          echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/keyword:/'
+          echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/regexp:^.*/'
+          echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/$/.*$/'
           echo sites/micro sites/down sites/reject | xargs -n 1 sed -i 's/^/domain:/'
-          echo "keyword:-pcdn-" >> sites/reject
-          echo "keyword:mcdn.bili" >> sites/reject
+          echo "regexp:^.*-pcdn-.*$" >> sites/reject
+          echo "regexp:^.*mcdn.bili.*$" >> sites/reject
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           cp {geosite.dat,geosite.dat.sha256sum} publish
@@ -48,7 +49,7 @@ jobs:
 
           sed -i 's/full://' publish/surge/cn
           sed -i '/^regexp\:/,$d' publish/surge/cn
-          echo "regexp:^.*\.cn$" >> publish/surge/cn
+          echo ".cn" >> publish/surge/cn
           echo publish/surge/direct publish/surge/proxy publish/surge/apple \
           | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject \
