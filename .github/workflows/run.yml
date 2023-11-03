@@ -19,8 +19,6 @@ jobs:
           raw="https://raw.githubusercontent.com"
           wget -O sites/cn ${raw}/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
           wget -O sites/reject ${raw}/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
-          wget -O sites/icloud ${raw}/Loyalsoldier/surge-rules/release/icloud.txt
-          wget -O sites/apple ${raw}/Loyalsoldier/surge-rules/release/apple.txt
           sed -i '/^.*microsoft.*/d' sites/cn
           sed -i '/^.*speedte*.com*.*/d' sites/cn
           sed -i '/^.*apple*.*/d' sites/cn
@@ -28,11 +26,6 @@ jobs:
           sed -i '/^.*google*.*/d' sites/cn
           sed -i '/^.*edgekey*.*/d' sites/cn
           echo "p2p.huya.com" >> sites/reject
-          cat sites/icloud >> sites/apple
-          rm -f sites/icloud
-          sed -i 's/[^ ]//' sites/apple
-          echo "courier.push.apple.com" >> sites/apple
-          echo 'apac-china-courier' >> sites/apple
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
 
@@ -56,8 +49,6 @@ jobs:
           | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
           echo "DOMAIN-KEYWORD,-pcdn-" >> publish/surge/reject
           echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/surge/reject
-          echo 'DOMAIN-KEYWORD,courier.push.apple.com' >> publish/surge/apple
-          echo 'DOMAIN-KEYWORD,apac-china-courier' >> publish/surge/apple
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct
           echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
@@ -72,8 +63,6 @@ jobs:
           | xargs -n 1 sed -i 's/^/  - DOMAIN-SUFFIX,/'
           echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject
           echo "  - DOMAIN-KEYWORD,mcdn.bili" >> publish/clash/reject
-          echo '  - DOMAIN-KEYWORD,courier.push.apple.com' >> publish/clash/apple
-          echo '  - DOMAIN-KEYWORD,apac-china-courier' >> publish/clash/apple
           sed -i '1i\payload:' publish/clash/*
 
       - name: Generate Release
