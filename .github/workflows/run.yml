@@ -31,7 +31,6 @@ jobs:
           sed -i '/^.*edgekey*.*/d' sites/cn
           sed -i '/^.*akamaihd*.*/d' sites/cn
           sed -i '/^.*akamaized*.*/d' sites/cn
-          echo ".cn" >> sites/cn
           echo "p2p.huya.com" >> sites/reject
           cat sites/icloud >> sites/apple
           rm -f sites/icloud
@@ -41,6 +40,7 @@ jobs:
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
 
+          echo "regexp:^.*\.cn$" >> sites/cn
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/keyword:/'
           echo sites/micro sites/down sites/reject | xargs -n 1 sed -i 's/^/domain:/'
           echo "keyword:-pcdn-" >> sites/reject
@@ -50,7 +50,9 @@ jobs:
           cp {geosite.dat,geosite.dat.sha256sum} publish
           cp sites/* publish/other
 
-          sed -i '/^full\:/,$d' publish/surge/cn
+          sed -i 's/full://' publish/surge/cn
+          sed -i '/^regexp\:/,$d' publish/surge/cn
+          echo "regexp:^.*\.cn$" >> publish/surge/cn
           echo publish/surge/direct publish/surge/proxy publish/surge/apple \
           | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject \
@@ -64,7 +66,9 @@ jobs:
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
           echo "USER-AGENT,*QQ*" >> publish/surge/direct
 
-          sed -i '/^full\:/,$d' publish/clash/cn
+          sed -i 's/full://' publish/clash/cn
+          sed -i '/^regexp\:/,$d' publish/clash/cn
+          echo ".cn" >> publish/clash/cn
           echo publish/clash/direct publish/clash/proxy publish/clash/apple \
           | xargs -n 1 sed -i 's/^/  - DOMAIN-KEYWORD,/'
           echo publish/clash/cn publish/clash/micro publish/clash/down publish/clash/reject \
