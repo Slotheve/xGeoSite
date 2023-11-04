@@ -19,12 +19,13 @@ jobs:
           raw="https://raw.githubusercontent.com"
           wget -O sites/cn ${raw}/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
           wget -O sites/reject ${raw}/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
-          sed -i '/^.*microsoft.*/d' sites/cn
-          sed -i '/^.*speedte*.com*.*/d' sites/cn
-          sed -i '/^.*apple*.*/d' sites/cn
-          sed -i '/^.*icloud*.*/d' sites/cn
-          sed -i '/^.*google*.*/d' sites/cn
-          sed -i '/^.*edgekey*.*/d' sites/cn
+          sed -i '/^.*microsoft.*$/d' sites/cn
+          sed -i '/^.*speedte*.co.*$/d' sites/cn
+          sed -i '/^.*apple*.*$/d' sites/cn
+          sed -i '/^.*icloud*.*$/d' sites/cn
+          sed -i '/^.*google*.*$/d' sites/cn
+          sed -i '/^.*edgekey*.*$/d' sites/cn
+          sed -i '/^.*statwup.huya.*$/d' sites/reject
           echo "p2p.huya.com" >> sites/reject
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
