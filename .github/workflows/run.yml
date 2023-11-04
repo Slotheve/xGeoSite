@@ -35,6 +35,7 @@ jobs:
           echo sites/micro sites/down sites/reject | xargs -n 1 sed -i 's/^/domain:/'
           echo "regexp:^.*-pcdn-.*$" >> sites/reject
           echo "regexp:^.*mcdn.bili.*$" >> sites/reject
+          echo "regexp:^.szbdyd.com$" >> sites/reject
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           cp {geosite.dat,geosite.dat.sha256sum} publish
@@ -49,6 +50,7 @@ jobs:
           | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
           echo "DOMAIN-KEYWORD,-pcdn-" >> publish/surge/reject
           echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/surge/reject
+          echo "DOMAIN-KEYWORD,szbdyd.com" >> publish/surge/reject
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct
           echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
@@ -63,6 +65,7 @@ jobs:
           | xargs -n 1 sed -i 's/^/  - DOMAIN-SUFFIX,/'
           echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject
           echo "  - DOMAIN-KEYWORD,mcdn.bili" >> publish/clash/reject
+          echo "  - DOMAIN-KEYWORD,szbdyd.com" >> publish/clash/reject
           sed -i '1i\payload:' publish/clash/*
 
       - name: Generate Release
