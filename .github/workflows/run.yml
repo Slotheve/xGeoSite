@@ -31,7 +31,7 @@ jobs:
           sed -i '/^.*google*.*$/d' sites/cn
           sed -i '/^.*edgekey*.*$/d' sites/cn
           sed -i '/^.*metric.huya.*$/d' sites/reject
-          echo "p2p.huya.com" >> sites/reject
+          echo "DOMAIN-KEYWORD,p2p.huya.com" >> sites/reject
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
 
