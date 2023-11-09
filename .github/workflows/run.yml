@@ -36,8 +36,8 @@ jobs:
           cp sites/* publish/surge && cp sites/* publish/clash
 
           echo "regexp:^.*\.cn$" >> sites/cn
-          echo sites/reject publish/other/reject | xargs -n 1 sed -i 's/DOMAIN-SUFFIX,/domain:/'
-          echo sites/reject publish/other/reject | xargs -n 1 sed -i 's/DOMAIN-KEYWORD,/keyword:/'
+          sed -i 's/DOMAIN-SUFFIX,/domain:/' sites/reject
+          sed -i 's/DOMAIN-KEYWORD,/keyword:/' sites/reject
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/regexp:^.*/'
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/$/.*$/'
           echo sites/micro sites/down | xargs -n 1 sed -i 's/^/domain:/'
