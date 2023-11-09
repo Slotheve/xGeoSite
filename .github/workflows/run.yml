@@ -49,9 +49,9 @@ jobs:
           | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
           echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject \
           | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
-          echo "DOMAIN-KEYWORD,-pcdn-" >> publish/surge/reject
-          echo "DOMAIN-KEYWORD,mcdn.bili" >> publish/surge/reject
-          echo "DOMAIN-KEYWORD,szbdyd.com" >> publish/surge/reject
+          sed -i 's/$/,extended-matching/' publish/surge/*
+          echo "DOMAIN-KEYWORD,-pcdn-,extended-matching" >> publish/surge/reject
+          echo "DOMAIN-KEYWORD,szbdyd.com,extended-matching" >> publish/surge/reject
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct
           echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
