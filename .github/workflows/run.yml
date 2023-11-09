@@ -19,9 +19,11 @@ jobs:
           raw="https://raw.githubusercontent.com"
           wget -O sites/cn ${raw}/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
           wget -O sites/reject ${raw}/limbopro/Adblock4limbo/main/Surge/rule/BanAD_surge.list
-          wget -O sites/tmp ${raw}/limbopro/Adblock4limbo/main/Surge/rule/easylistchina_surge.list
-          cat sites/tmp >> sites/reject
-          rm -rf sites/tmp
+          wget -O sites/tmp1 ${raw}/limbopro/Adblock4limbo/main/Surge/rule/easylistchina_surge.list
+          wget -O sites/tmp2 ${raw}/limbopro/Adblock4limbo/main/Surge/rule/Peter_Lowe_adservers_surge.list
+          cat sites/tmp1 >> sites/reject
+          cat sites/tmp2 >> sites/reject
+          rm -rf sites/tmp*
           sed -i '/^#.*$/d' sites/reject
           sed -i '/^$/d' sites/reject
           sed -i '/^.*microsoft.*$/d' sites/cn
