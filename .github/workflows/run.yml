@@ -18,7 +18,12 @@ jobs:
           chmod -R 777 xGeoSite && cd xGeoSite
           raw="https://raw.githubusercontent.com"
           wget -O sites/cn ${raw}/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
-          wget -O sites/reject ${raw}/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
+          wget -O sites/reject ${raw}/limbopro/Adblock4limbo/main/Surge/rule/BanAD_surge.list
+          wget -O sites/tmp ${raw}/limbopro/Adblock4limbo/blob/main/Surge/rule/easylistchina_surge.list
+          cat sites/tmp >> sites/reject
+          rm -rf sites/tmp
+          sed -i '/^#.*$/d' sites/reject
+          sed -i '/^$/d' sites/reject
           sed -i '/^.*microsoft.*$/d' sites/cn
           sed -i '/^.*speedte*.co.*$/d' sites/cn
           sed -i '/^.*apple*.*$/d' sites/cn
@@ -31,9 +36,11 @@ jobs:
           cp sites/* publish/surge && cp sites/* publish/clash
 
           echo "regexp:^.*\.cn$" >> sites/cn
+          echo sites/reject publish/other/reject | xargs -n 1 sed -i 's/DOMAIN-SUFFIX,/domain:/'
+          echo sites/reject publish/other/reject | xargs -n 1 sed -i 's/DOMAIN-KEYWORD,/keyword:/'
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/regexp:^.*/'
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/$/.*$/'
-          echo sites/micro sites/down sites/reject | xargs -n 1 sed -i 's/^/domain:/'
+          echo sites/micro sites/down | xargs -n 1 sed -i 's/^/domain:/'
           echo "regexp:^.*-pcdn-.*$" >> sites/reject
           echo "regexp:^.*mcdn.bili.*$" >> sites/reject
           echo "regexp:^.szbdyd.com$" >> sites/reject
@@ -47,7 +54,7 @@ jobs:
           echo ".cn" >> publish/surge/cn
           echo publish/surge/direct publish/surge/proxy publish/surge/apple \
           | xargs -n 1 sed -i 's/^/DOMAIN-KEYWORD,/'
-          echo publish/surge/cn publish/surge/micro publish/surge/down publish/surge/reject \
+          echo publish/surge/cn publish/surge/micro publish/surge/down \
           | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
           sed -i 's/$/,extended-matching/' publish/surge/*
           echo "DOMAIN-KEYWORD,-pcdn-,extended-matching" >> publish/surge/reject
@@ -62,10 +69,10 @@ jobs:
           echo ".cn" >> publish/clash/cn
           echo publish/clash/direct publish/clash/proxy publish/clash/apple \
           | xargs -n 1 sed -i 's/^/  - DOMAIN-KEYWORD,/'
-          echo publish/clash/cn publish/clash/micro publish/clash/down publish/clash/reject \
+          echo publish/clash/cn publish/clash/micro publish/clash/down \
           | xargs -n 1 sed -i 's/^/  - DOMAIN-SUFFIX,/'
+          sed -i 's/^/  - /' publish/clash/reject
           echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject
-          echo "  - DOMAIN-KEYWORD,mcdn.bili" >> publish/clash/reject
           echo "  - DOMAIN-KEYWORD,szbdyd.com" >> publish/clash/reject
           sed -i '1i\payload:' publish/clash/*
 
