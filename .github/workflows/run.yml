@@ -18,34 +18,33 @@ jobs:
           chmod -R 777 xGeoSite && cd xGeoSite
           raw="https://raw.githubusercontent.com"
           wget -O sites/cn ${raw}/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt
-          wget -O sites/reject ${raw}/limbopro/Adblock4limbo/main/Surge/rule/BanAD_surge.list
+          wget -O sites/reject-drop ${raw}/limbopro/Adblock4limbo/main/Surge/rule/BanAD_surge.list
           wget -O sites/tmp1 ${raw}/limbopro/Adblock4limbo/main/Surge/rule/easylistchina_surge.list
-          wget -O sites/tmp2 ${raw}/limbopro/Adblock4limbo/main/Surge/rule/Peter_Lowe_adservers_surge.list
-          cat sites/tmp1 >> sites/reject
-          cat sites/tmp2 >> sites/reject
+          wget -O sites/reject-tiny ${raw}/limbopro/Adblock4limbo/main/Surge/rule/Peter_Lowe_adservers_surge.list
+          cat sites/tmp1 >> sites/reject-drop
           rm -rf sites/tmp*
-          sed -i '/^#.*$/d' sites/reject
-          sed -i '/^$/d' sites/reject
+          sed -i '/^#.*$/d' sites/reject*
+          sed -i '/^$/d' sites/reject*
           sed -i '/^.*microsoft.*$/d' sites/cn
           sed -i '/^.*speedte*.co.*$/d' sites/cn
           sed -i '/^.*apple*.*$/d' sites/cn
           sed -i '/^.*icloud*.*$/d' sites/cn
           sed -i '/^.*google*.*$/d' sites/cn
           sed -i '/^.*edgekey*.*$/d' sites/cn
-          sed -i '/^.*metric.huya.*$/d' sites/reject
-          echo "DOMAIN-KEYWORD,p2p.huya.com" >> sites/reject
+          sed -i '/^.*metric.huya.*$/d' sites/reject-drop
+          echo "DOMAIN-KEYWORD,p2p.huya.com" >> sites/reject-drop
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
 
           echo "regexp:^.*\.cn$" >> sites/cn
-          sed -i 's/DOMAIN-SUFFIX,/domain:/' sites/reject
-          sed -i 's/DOMAIN-KEYWORD,/keyword:/' sites/reject
+          sed -i 's/DOMAIN-SUFFIX,/domain:/' sites/reject*
+          sed -i 's/DOMAIN-KEYWORD,/keyword:/' sites/reject*
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/^/regexp:^.*/'
           echo sites/direct sites/proxy sites/apple | xargs -n 1 sed -i 's/$/.*$/'
           echo sites/micro sites/down | xargs -n 1 sed -i 's/^/domain:/'
-          echo "regexp:^.*-pcdn-.*$" >> sites/reject
-          echo "regexp:^.*mcdn.bili.*$" >> sites/reject
-          echo "regexp:^.szbdyd.com$" >> sites/reject
+          echo "regexp:^.*-pcdn-.*$" >> sites/reject-drop
+          echo "regexp:^.*mcdn.bili.*$" >> sites/reject-drop
+          echo "regexp:^.szbdyd.com$" >> sites/reject-drop
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           cp {geosite.dat,geosite.dat.sha256sum} publish
@@ -59,8 +58,8 @@ jobs:
           echo publish/surge/cn publish/surge/micro publish/surge/down \
           | xargs -n 1 sed -i 's/^/DOMAIN-SUFFIX,/'
           sed -i 's/$/,extended-matching/' publish/surge/*
-          echo "DOMAIN-KEYWORD,-pcdn-,extended-matching" >> publish/surge/reject
-          echo "DOMAIN-KEYWORD,szbdyd.com,extended-matching" >> publish/surge/reject
+          echo "DOMAIN-KEYWORD,-pcdn-,extended-matching" >> publish/surge/reject-drop
+          echo "DOMAIN-KEYWORD,szbdyd.com,extended-matching" >> publish/surge/reject-drop
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct
           echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
@@ -73,9 +72,9 @@ jobs:
           | xargs -n 1 sed -i 's/^/  - DOMAIN-KEYWORD,/'
           echo publish/clash/cn publish/clash/micro publish/clash/down \
           | xargs -n 1 sed -i 's/^/  - DOMAIN-SUFFIX,/'
-          sed -i 's/^/  - /' publish/clash/reject
-          echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject
-          echo "  - DOMAIN-KEYWORD,szbdyd.com" >> publish/clash/reject
+          sed -i 's/^/  - /' publish/clash/reject-drop
+          echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject-drop
+          echo "  - DOMAIN-KEYWORD,szbdyd.com" >> publish/clash/reject-drop
           sed -i '1i\payload:' publish/clash/*
 
       - name: Generate Release
