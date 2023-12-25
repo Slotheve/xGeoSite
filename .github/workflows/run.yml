@@ -33,6 +33,8 @@ jobs:
           sed -i '/^.*edgekey*.*$/d' sites/cn
           sed -i '/^.*metric.huya.*$/d' sites/reject-drop
           echo "DOMAIN-KEYWORD,p2p.huya.com" >> sites/reject-drop
+          echo "DOMAIN-KEYWORD,tracker.bili" >> sites/reject-drop
+          echo "DOMAIN-KEYWORD,mcdn.bili" >> sites/reject-drop
           mkdir -pv publish/other publish/clash publish/surge
           cp sites/* publish/surge && cp sites/* publish/clash
 
@@ -44,6 +46,7 @@ jobs:
           echo sites/micro sites/down | xargs -n 1 sed -i 's/^/domain:/'
           echo "regexp:^.*-pcdn-.*$" >> sites/reject-drop
           echo "regexp:^.*mcdn.bili.*$" >> sites/reject-drop
+          echo "regexp:^.*tracker.bili.*$" >> sites/reject-drop
           echo "regexp:^.szbdyd.com$" >> sites/reject-drop
           echo "regexp:^.*microsoft.*$" >> sites/micro
           ./v2sitedat
