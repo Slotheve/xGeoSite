@@ -48,6 +48,7 @@ jobs:
           echo "regexp:^.*tracker.bili.*$" >> sites/reject-drop
           echo "regexp:^.szbdyd.com$" >> sites/reject-drop
           echo "regexp:^.*microsoft.*$" >> sites/micro
+          echo "regexp:^.*edge.net$" >> sites/micro
           ./v2sitedat
           sha256sum geosite.dat > geosite.dat.sha256sum
           cp {geosite.dat,geosite.dat.sha256sum} publish
@@ -64,6 +65,7 @@ jobs:
           echo "DOMAIN-KEYWORD,-pcdn-,extended-matching" >> publish/surge/reject-drop
           echo "DOMAIN-KEYWORD,szbdyd.com,extended-matching" >> publish/surge/reject-drop
           echo "DOMAIN-KEYWORD,microsoft,extended-matching" >> publish/surge/micro
+          echo "DOMAIN-KEYWORD,edge.net,extended-matching" >> publish/surge/micro
           echo "USER-AGENT,*TencentMidasConnect*" >> publish/surge/direct
           echo "USER-AGENT,*WeChat*" >> publish/surge/direct
           echo "USER-AGENT,*MicroMessenger*" >> publish/surge/direct
@@ -80,6 +82,7 @@ jobs:
           echo "  - DOMAIN-KEYWORD,-pcdn-" >> publish/clash/reject-drop
           echo "  - DOMAIN-KEYWORD,szbdyd.com" >> publish/clash/reject-drop
           echo "  - DOMAIN-KEYWORD,microsoft" >> publish/clash/micro
+          echo "  - DOMAIN-KEYWORD,edge.net" >> publish/clash/micro
           sed -i '1i\payload:' publish/clash/*
 
       - name: Generate Release
