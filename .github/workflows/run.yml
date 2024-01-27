@@ -46,7 +46,7 @@ jobs:
           echo "*.szbdyd.com" >> publish/win2socks/reject-tiny
           echo "*microsoft*" >> publish/win2socks/micro
           echo "*edge.net" >> publish/win2socks/micro
-          echo ".cn" >> publish/win2socks/cn
+          echo "*.cn" >> publish/win2socks/cn
           sed -i 's/full://' publish/win2socks/cn
           sed -i '/^regexp\:/,$d' publish/win2socks/cn
 
