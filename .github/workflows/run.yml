@@ -34,8 +34,21 @@ jobs:
           sed -i '/^.*metric.huya.*$/d' sites/reject-drop
           echo "DOMAIN-KEYWORD,tracker.bili" >> sites/reject-drop
           echo "DOMAIN-KEYWORD,mcdn.bili" >> sites/reject-drop
-          mkdir -pv publish/other publish/clash publish/surge
-          cp sites/* publish/surge && cp sites/* publish/clash
+          mkdir -pv publish/other publish/clash publish/surge publish/win2socks
+          cp sites/* publish/surge && cp sites/* publish/clash && cp sites/* publish/win2socks
+          cat publish/win2socks/reject-drop >> publish/win2socks/reject-tiny && rm publish/win2socks/reject-drop
+
+          sed -i 's/DOMAIN-SUFFIX,//' publish/win2socks/reject-tiny
+          sed -i 's/DOMAIN-KEYWORD,//' publish/win2socks/reject-tiny
+          echo "*-pcdn-*" >> publish/win2socks/reject-tiny
+          echo "*mcdn.bili*" >> publish/win2socks/reject-tiny
+          echo "*tracker.bili*" >> publish/win2socks/reject-tiny
+          echo "*.szbdyd.com" >> publish/win2socks/reject-tiny
+          echo "*microsoft*" >> publish/win2socks/micro
+          echo "*edge.net" >> publish/win2socks/micro
+          echo ".cn" >> publish/win2socks/cn
+          sed -i 's/full://' publish/win2socks/cn
+          sed -i '/^regexp\:/,$d' publish/win2socks/cn
 
           echo "regexp:^.*\.cn$" >> sites/cn
           sed -i 's/DOMAIN-SUFFIX,/domain:/' sites/reject*
