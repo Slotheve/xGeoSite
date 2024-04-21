@@ -6,4 +6,4 @@ DOMAIN-KEYWORD,.gvt2.com,extended-matching
 DOMAIN-KEYWORD,v1d.szbdyd.com,extended-matching
 DOMAIN-KEYWORD,jddebug.com,extended-matching
 DOMAIN-KEYWORD,xdrtc.com,extended-matching
-OR,(AND,((OR,((DEST-PORT,8000), (DEST-PORT,3478))), (OR,((PROTOCOL,UDP),(PROTOCOL,STUN))))), (PROTOCOL,QUIC))
+AND,((OR,((DEST-PORT,443),(DEST-PORT,3478),(DEST-PORT,8000))), (OR,((PROTOCOL,UDP),(PROTOCOL,STUN))))
