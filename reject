@@ -1,4 +1,5 @@
-DOMAIN-KEYWORD,jpush.cn,extended-matching
+DOMAIN-KEYWORD,.jpush,extended-matching
+DOMAIN-KEYWORD,.jiguang,extended-matching
 DOMAIN-KEYWORD,-pcdn-,extended-matching
 DOMAIN-KEYWORD,mcdn.bili,extended-matching
 DOMAIN-KEYWORD,tracker.bili,extended-matching
