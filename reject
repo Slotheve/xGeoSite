@@ -8,4 +8,5 @@ DOMAIN-KEYWORD,v1d.szbdyd.com,extended-matching
 DOMAIN-KEYWORD,jddebug.com,extended-matching
 DOMAIN-KEYWORD,xdrtc.com,extended-matching
 DOMAIN-KEYWORD,dns.google,extended-matching
+DOMAIN-KEYWORD,googleadservices.com,extended-matching
 AND,((OR,((DEST-PORT,123),(DEST-PORT,443),(DEST-PORT,3478),(DEST-PORT,8000))), (OR,((PROTOCOL,UDP),(PROTOCOL,STUN),(PROTOCOL,QUIC))))
