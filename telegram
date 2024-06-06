@@ -10,7 +10,7 @@ DOMAIN-SUFFIX,telegram-cdn.org
 DOMAIN-SUFFIX,graph.org
 DOMAIN-SUFFIX,legra.ph
 DOMAIN-SUFFIX,telesco.pe
-IP-CIDR,109.239.140.0/24,no-resolv
+IP-CIDR,109.239.140.0/24,no-resolve
 IP-CIDR,5.28.192.0/18,no-resolve
 IP-CIDR6,2a0a:f280::/32,no-resolve
 IP-ASN,44907,no-resolve
