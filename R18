@@ -1,2 +1,2 @@
 DOMAIN-KEYWORD,18comic.,extended-matching
-URL-REGEX,hanime*/.
+URL-REGEX,^https?:\/\/.*hanime.*
