@@ -1,0 +1,17 @@
+regexp:^.**.digicert.com.*$
+regexp:^.**.local.*$
+regexp:^.*ggy.net.*$
+regexp:^.*ipssh.net.*$
+regexp:^.*owocloud.net.*$
+regexp:^.*towords.net.*$
+regexp:^.**.omoapi.*.*$
+regexp:^.*wanmei.com.*$
+regexp:^.*data.flurry.com.*$
+regexp:^.*iplc.secretbase.club.*$
+regexp:^.*12580life.com.*$
+regexp:^.*cmpbook.com.*$
+regexp:^.*lenglengyu.com.*$
+regexp:^.*niceios.com.*$
+regexp:^.*yesclouds.com.*$
+regexp:^.*coalcloud.net.*$
+regexp:^.*ocent.net.*$
