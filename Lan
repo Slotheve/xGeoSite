@@ -1,0 +1,16 @@
+## === 本地/局域网/保留地址 ===
+
+# 本地地址
+IP-CIDR,192.168.1.1/16,no-resolve
+IP-CIDR6,fc00::/7,no-resolve
+IP-CIDR6,fe80::/10,no-resolve
+IP-CIDR6,fd00::/8,no-resolve
+
+# 本地地址
+DOMAIN-SUFFIX,lan
+# RFC6762
+DOMAIN-SUFFIX,local
+DOMAIN-SUFFIX,localhost
+DOMAIN-SUFFIX,in-addr.arpa
+# 内网域名
+DOMAIN-SUFFIX,internal
