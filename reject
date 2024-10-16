@@ -10,4 +10,4 @@ DOMAIN-KEYWORD,xdrtc.com,extended-matching
 DOMAIN-KEYWORD,dns.google,extended-matching
 DOMAIN-KEYWORD,googleadservices.com,extended-matching
 DOMAIN,dataflow.biliapi.com,extended-matching
-AND,((OR,((DEST-PORT,123),(DEST-PORT,443),(DEST-PORT,3478),(DEST-PORT,8000))), (OR,((PROTOCOL,UDP),(PROTOCOL,STUN),(PROTOCOL,QUIC))))
+OR,((AND,((GEOIP,CN,no-resolve), (OR,((PROTOCOL,STUN), (PROTOCOL,QUIC), (PROTOCOL,UDP))), (DEST-PORT,3478))), (AND,((NOT,((GEOIP,CN,no-resolve))), (OR,((PROTOCOL,STUN), (PROTOCOL,UDP), (PROTOCOL,QUIC))), (OR,((DEST-PORT,8000), (DEST-PORT,443), (DEST-PORT,123))))))
