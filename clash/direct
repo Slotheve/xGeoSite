@@ -1,0 +1,25 @@
+payload:
+  - DOMAIN-KEYWORD,*.digicert.com
+  - DOMAIN-KEYWORD,*.local
+  - DOMAIN-KEYWORD,ggy.net
+  - DOMAIN-KEYWORD,ipssh.net
+  - DOMAIN-KEYWORD,owocloud.net
+  - DOMAIN-KEYWORD,towords.net
+  - DOMAIN-KEYWORD,*.omoapi.*
+  - DOMAIN-KEYWORD,wanmei.com
+  - DOMAIN-KEYWORD,data.flurry.com
+  - DOMAIN-KEYWORD,iplc.secretbase.club
+  - DOMAIN-KEYWORD,12580life.com
+  - DOMAIN-KEYWORD,cmpbook.com
+  - DOMAIN-KEYWORD,lenglengyu.com
+  - DOMAIN-KEYWORD,niceios.com
+  - DOMAIN-KEYWORD,yesclouds.com
+  - DOMAIN-KEYWORD,coalcloud.net
+  - DOMAIN-KEYWORD,ocent.net
+  - DOMAIN-KEYWORD,4299.net
+  - DOMAIN-KEYWORD,guiour.com
+  - DOMAIN-KEYWORD,jepcc1.com
+  - DOMAIN-KEYWORD,jsrsioa.com
+  - DOMAIN-KEYWORD,cdnjs.loli.net
+  - DOMAIN-KEYWORD,liankenet.com
+  - DOMAIN-KEYWORD,huaweicloud.com
